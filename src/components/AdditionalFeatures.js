@@ -1,7 +1,9 @@
-import React from 'react';
-import AdditionalFeature from './AdditionalFeature';
+import React from "react";
+import AdditionalFeature from "./AdditionalFeature";
 
 const AdditionalFeatures = props => {
+  console.log("AdditionalFeatures", props);
+  // console.log("features", props.features);
   return (
     <div className="content">
       <h4>Additional Features</h4>
