@@ -3,29 +3,52 @@ import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
+import { connect } from "react-redux";
+import { removeFeature, buyFeature } from "./actions/actions";
 
 const App = props => {
-  // this will remove an item from the features[]
-  // const removeFeature = item => {
-  //   props.removeFeature();
-  //   // dispatch an action here to remove an item
-  // };
+  console.log("app", props);
 
-  // this will add an item from additionalFeatures[{}] to the features []
+  const buyFeature = item => {
+    props.buyFeature(item);
+    // console.log("item", item);
+  };
+
+  const removeFeature = item => {
+    props.removeFeature(item.id);
+  };
+
   return (
     <div className="boxes">
       <div className="box">
-        <Header /*car={props.state.car}*/ />
-        <AddedFeatures /*car={props.state.car}*/ />
+        <Header car={props.car} />
+        <AddedFeatures car={props.car} removeFeature={removeFeature} />
       </div>
       <div className="box">
-        <AdditionalFeatures /*additionalFeatures={props.state.additionalFeatures}*/
+        <AdditionalFeatures
+          additionalFeatures={props.additionalFeatures}
+          buyFeature={buyFeature}
         />
-        <Total />
-        {/* car={props.state.car} additionalPrice={state.additionalPrice} /> */}
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
   );
 };
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    car: state.car,
+    additionalPrice: state.additionalPrice,
+    additionalFeatures: state.additionalFeatures
+  };
+}
+
+const mapDispatchToProps = {
+  buyFeature,
+  removeFeature
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

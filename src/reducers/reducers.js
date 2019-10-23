@@ -22,7 +22,11 @@ export function reducer(state = initialState, action) {
     case BUY_FEATURE:
       return {
         ...state,
-        features: action.payload
+        car: {
+          ...state.car,
+          features: [...state.car.features, action.payload],
+          price: state.car.price + action.payload.price
+        }
       };
     case REMOVE_FEATURE:
       return {

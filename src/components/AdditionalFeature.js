@@ -1,16 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
 import { buyFeature } from "../actions/actions";
 
 const AdditionalFeature = props => {
-  const buyFeature = item => {
-    props.buyFeature(item);
-  };
-
   console.log(" AdditionalFeature", props);
+
   return (
     <li>
-      <button onClick={buyFeature(props.id)} className="button">
+      <button onClick={() => buyFeature(props.feature)} className="button">
         Add
       </button>
       {props.feature.name} (+{props.feature.price})
@@ -18,11 +14,4 @@ const AdditionalFeature = props => {
   );
 };
 
-const mapDispatchToProps = {
-  buyFeature
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(AdditionalFeature);
+export default AdditionalFeature;
