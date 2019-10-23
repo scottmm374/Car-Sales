@@ -12,10 +12,6 @@ const App = props => {
   // };
 
   // this will add an item from additionalFeatures[{}] to the features []
-  const buyItem = item => {
-    props.buyFeature();
-  };
-
   return (
     <div className="boxes">
       <div className="box">
