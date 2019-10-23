@@ -15,7 +15,9 @@ const Header = props => {
 };
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    car: state.car
+  };
 }
 export default connect(
   mapStateToProps,
