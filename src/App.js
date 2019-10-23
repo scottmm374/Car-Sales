@@ -11,11 +11,10 @@ const App = props => {
 
   const buyFeature = item => {
     props.buyFeature(item);
-    // console.log("item", item);
   };
 
   const removeFeature = item => {
-    props.removeFeature(item.id);
+    props.removeFeature(item);
   };
 
   return (
